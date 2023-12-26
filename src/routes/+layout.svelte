@@ -1,31 +1,13 @@
 <script lang="ts">
 	import { invalidate } from '$app/navigation';
-	// import { page } from '$app/stores';
-	// import { supabase } from '$lib/supabase';
+
 	import { onMount } from 'svelte';
 	import '../app.css';
 	import type { LayoutData } from './$types';
 
 	// import { fade } from 'svelte/transition';
 
-	// import getBlocksCountByUserId from '../queries/user/getBlocksCountByUserId';
-	// import getCollectionsCountByUserId from '../queries/user/getCollectionsCountByUserId';
-	// import getUserById from '../queries/user/getUserById';
-
 	export let data: any;
-
-	let { supabase, session } = data;
-	$: ({ supabase, session } = data);
-
-	onMount(() => {
-		const { data } = supabase.auth.onAuthStateChange((event, _session) => {
-			if (_session?.expires_at !== session?.expires_at) {
-				invalidate('supabase:auth');
-			}
-		});
-
-		return () => data.subscription.unsubscribe();
-	});
 </script>
 
 <div class="app">

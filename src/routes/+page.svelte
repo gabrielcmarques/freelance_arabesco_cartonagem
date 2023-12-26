@@ -4,8 +4,6 @@
 	import Header from './Header.svelte';
 	import Navbar from './Navbar.svelte';
 	import Produtos from './Produtos.svelte';
-	export let data: any;
-
 </script>
 
 <svelte:head>
@@ -16,6 +14,6 @@
 <body class=" bg-white">
 	<Header />
 	<Footer />
-	<Produtos {data} />
+	<Produtos />
 	<Navbar />
 </body>

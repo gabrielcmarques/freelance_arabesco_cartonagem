@@ -10,10 +10,7 @@
 	export let data;
 	export let form;
 
-	const dispatch = createEventDispatcher()
-
-	let { session, supabase, profile } = data;
-	$: ({ session, supabase, profile } = data);
+	const dispatch = createEventDispatcher();
 
 	// console.log('@@@ PROFILE: \n', profile);
 
@@ -45,8 +42,7 @@
 		// }
 
 		const file = files[0];
-		
-		
+
 		const fileExt = file.name.split('.').pop();
 		const filePath = `${Math.random()}.${fileExt}`;
 		console.log('@@@FILES: \n', file);
@@ -125,9 +121,9 @@
 				bind:files
 				on:change={uploadAvatar}
 			/>
-		</div>		
+		</div>
 
-		<div>			
+		<div>
 			<button
 				type="submit"
 				class="button block primary"

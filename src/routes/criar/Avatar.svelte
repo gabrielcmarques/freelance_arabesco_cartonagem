@@ -1,12 +1,11 @@
-<!-- src/routes/account/Avatar.svelte -->
+<!-- src/routes/account/Avatar.svelte
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import type { SupabaseClient } from '@supabase/supabase-js';
 	import { createEventDispatcher } from 'svelte';
 
 	export let size = 10;
 	export let url: string;
-	export let supabase: SupabaseClient;
+
 
 	let imagemUrl: string | null = null;
 	let uploading = false;
@@ -84,5 +83,4 @@
 	{:else}
 		<div class="avatar no-image" style="height: {size}em; width: {size}em;" />
 	{/if}
-	
-</div>
+</div> -->
