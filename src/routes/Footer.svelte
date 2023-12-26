@@ -1,8 +1,3 @@
-<!-- src/Footer.svelte -->
-<script lang="ts">
-	import type { FileObject } from './$types';
-</script>
-
 <footer class="shapedividers_com-2966" aria-labelledby="footerHeading">
 	<h2 id="footerHeading" class="sr-only">Footer</h2>
 	<div class="max-w-7xl mx-auto py-8 px-4 sm:px-6">
