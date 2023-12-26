@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: 'Inter';
+	font-style: regular;
+	font-weight: 400;
+	src: url('/fonts/Inter/Inter-VariableFont_slnt,wght.ttf');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Poiretr';
+	font-style: regular;
+	font-weight: 400;
+	src: url('/fonts/Poiret_One/PoiretOne-Regular.ttf');
+	font-display: swap;
+}
+
+* {
+	font-family: 'Inter', Arial, sans-serif;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background: linear-gradient(to bottom, #000 0%, #4f1f55 45%, #6b2171 100%);
+	color: #ffffff;
+	z-index: -99;
+}
