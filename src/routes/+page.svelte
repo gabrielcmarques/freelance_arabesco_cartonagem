@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
+	import CookiesBtn from './CookiesBtn.svelte';
 	import Footer from './Footer.svelte';
 	import Header from './Header.svelte';
 	import Navbar from './Navbar.svelte';
@@ -12,8 +13,7 @@
 </svelte:head>
 
 <body class=" bg-white">
-	<Header />
+	
 	<Footer />
 	<Produtos />
-	<Navbar />
 </body>

@@ -4,19 +4,19 @@
 
 @font-face {
 	font-family: 'Inter';
-	font-style: regular;
+	font-style: normal;
 	font-weight: 400;
 	src: url('/fonts/Inter/Inter-VariableFont_slnt,wght.ttf');
 	font-display: swap;
 }
 
-@font-face {
+/* @font-face {
 	font-family: 'Poiretr';
-	font-style: regular;
+	font-style: normal;
 	font-weight: 400;
 	src: url('/fonts/Poiret_One/PoiretOne-Regular.ttf');
 	font-display: swap;
-}
+} */
 
 * {
 	font-family: 'Inter', Arial, sans-serif;
