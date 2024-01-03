@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { cookie_icon } from '$lib';
 	import { onMount } from 'svelte';
 
 	// Function to set a cookie with a given name, value, and expiration time in days
@@ -31,11 +32,7 @@
 	<div style="background-color: rgb(255, 255, 255)">
 		<div class="w-72 bg-white rounded-lg shadow-md p-6" style="cursor: auto;">
 			<div class="w-16 mx-auto relative -mt-10 mb-3">
-				<img
-					class="mt-10"
-					src="https://www.svgrepo.com/show/30963/cookie.svg"
-					alt="Cookie Icon SVG"
-				/>
+				<img class="mt-10" src={cookie_icon} alt="Cookie Icon SVG" />
 			</div>
 			<span class="w-full sm:w-48 block leading-normal text-gray-800 text-md mb-3"
 				>Esse site utiliza cookies para melhorar sua experiência.</span

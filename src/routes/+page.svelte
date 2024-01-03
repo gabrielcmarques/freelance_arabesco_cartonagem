@@ -1,7 +1,8 @@
 <script lang="ts">
+	import shape_texture from '$lib/assets/texture.webp';
 	import type { PageData } from './$types';
+	import Contato from './Contato.svelte';
 	import CookiesBtn from './CookiesBtn.svelte';
-	import Footer from './Footer.svelte';
 	import Header from './Header.svelte';
 	import Navbar from './Navbar.svelte';
 	import Produtos from './Produtos.svelte';
@@ -12,8 +13,8 @@
 	<meta name="description" content="Miriam Cartonagem e Bijuteria" />
 </svelte:head>
 
-<body class=" bg-white">
-	
-	<Footer />
+<div>
+	<Header />
+	<Contato />
 	<Produtos />
-</body>
+</div>

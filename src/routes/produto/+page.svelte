@@ -1,4 +1,4 @@
-<section class="my-20 grid grid-cols-2 mx-auto py-5 max-w-5xl bg-white rounded-lg p-2 ">
+<section class="my-40 grid grid-cols-2 mx-auto py-5 max-w-5xl bg-white rounded-lg p-2">
 	<div class="bg-white rounded-lg shadow-md">
 		<div class="relative max-w-md flex items-center justify-center">
 			<div class="photo-main rounded-lg">

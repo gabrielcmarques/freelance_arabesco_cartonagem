@@ -1,10 +1,11 @@
 <script lang="ts">
-	import homeBanner from '$lib/assets/home.webp';
+
+	import { home_banner } from '$lib';
 </script>
 
 <section>
 	<div
-		style="background:linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url({homeBanner}) no-repeat center;background-size:cover; "
+		style="background:linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url({home_banner}) no-repeat center;background-size:cover; "
 		class="max-sm:py-56 max-md:py-60 py-80 max-lg:py-60"
 	>
 		<!-- <h1 class="pb-4 max-sm:text-3xl max-md:text-5xl text-7xl font-['Poiretr'] text-">

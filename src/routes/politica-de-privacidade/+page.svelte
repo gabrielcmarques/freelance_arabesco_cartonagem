@@ -1,4 +1,4 @@
-<div class="max-w-2xl mx-auto py-8">
+<div class="max-w-2xl mx-auto py-8 text-white">
 	<!-- Política de Privacidade -->
 	<div class="mb-8">
 	  <h1 class="text-3xl font-bold mb-2">Política de Privacidade</h1>
