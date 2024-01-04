@@ -1,5 +1,4 @@
 <script lang="ts">
-
 	import { home_banner } from '$lib';
 </script>
 
@@ -7,6 +6,8 @@
 	<div
 		style="background:linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url({home_banner}) no-repeat center;background-size:cover; "
 		class="max-sm:py-56 max-md:py-60 py-80 max-lg:py-60"
+		width="1456" 
+		height="540"
 	>
 		<!-- <h1 class="pb-4 max-sm:text-3xl max-md:text-5xl text-7xl font-['Poiretr'] text-">
         MIRIAM DE CHRISTO CARTONAGEM E BIJUTERIAS

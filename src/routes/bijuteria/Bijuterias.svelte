@@ -13,33 +13,45 @@
 	>
 		<img
 			class="hover:opacity-75 min-h-full object-cover"
-			src="{bijuterias3}"
+			src={bijuterias3}
 			alt="1"
+			width="500"
+			height="500"
 		/>
 		<img
 			class="hover:opacity-75 min-h-full object-cover"
-			src="{bijuterias2}"
+			src={bijuterias2}
 			alt="1"
+			width="500"
+			height="500"
 		/>
 		<img
 			class="hover:opacity-75 min-h-full object-cover"
-			src="{bijuterias1}"
+			src={bijuterias1}
 			alt="1"
+			width="500"
+			height="500"
 		/>
 		<img
 			class="hover:opacity-75 min-h-full object-cover"
-			src="{bijuterias1}"
+			src={bijuterias1}
 			alt="1"
+			width="500"
+			height="500"
 		/>
 		<img
 			class="hover:opacity-75 min-h-full object-cover"
-			src="{bijuterias5}"
+			src={bijuterias5}
 			alt="1"
+			width="500"
+			height="500"
 		/>
 		<img
 			class="hover:opacity-75 min-h-full object-cover"
-			src="{bijuterias4}"
+			src={bijuterias4}
 			alt="1"
+			width="500"
+			height="500"
 		/>
 	</div>
 </section>

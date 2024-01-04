@@ -14,8 +14,7 @@
 </script>
 
 <div class="app">
-	<main >
-		
+	<main>
 		<CookiesBtn />
 		<Navbar />
 		<slot />

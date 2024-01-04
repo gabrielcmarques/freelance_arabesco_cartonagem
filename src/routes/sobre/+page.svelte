@@ -11,6 +11,8 @@
 					src="https://cdn.shopify.com/s/files/1/2204/2817/files/featurette-10-1000x1000.jpg?98122347912348223"
 					alt="sample57"
 					class="w-full h-full object-cover"
+					width="500"
+					height="500"
 				/>
 			</a>
 		</div>
@@ -44,6 +46,8 @@
 						src="https://cdn.shopify.com/s/files/1/2204/2817/files/hottest_trends_2-0078.jpg?1369754927576680618"
 						alt="sampl45"
 						class="w-full"
+						width="500"
+						height="500"
 					/></a
 				>
 				<figcaption class="mt-5">
@@ -58,6 +62,8 @@
 						src="https://cdn.shopify.com/s/files/1/2204/2817/files/budget_friendly_ideas_3-0078.jpg?15005372342585381625"
 						alt="sample50"
 						class="w-full"
+						width="500"
+						height="500"
 					/></a
 				>
 				<figcaption class="mt-5">
@@ -72,6 +78,8 @@
 						src="https://cdn.shopify.com/s/files/1/2204/2817/files/custom_proposals_2-0078.jpg?1369754927576680618"
 						alt="sample46"
 						class="w-full"
+						width="500"
+						height="500"
 					/>
 				</a>
 				<figcaption class="mt-5">

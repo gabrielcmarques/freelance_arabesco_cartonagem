@@ -81,7 +81,7 @@
 		box-sizing: border-box;
 	}
 
-	html,
+	/* html,
 	body {
 		height: 100%;
 	}
@@ -91,7 +91,7 @@
 		grid-template-rows: 1fr;
 		font-family: 'Raleway', sans-serif;
 		background-color: #01e37f;
-	}
+	} */
 
 	h3 {
 		font-size: 0.7em;

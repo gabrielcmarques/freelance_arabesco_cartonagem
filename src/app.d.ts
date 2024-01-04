@@ -1,10 +1,10 @@
-import { Session, SupabaseClient } from '@supabase/supabase-js';
+// import { Session, SupabaseClient } from '@supabase/supabase-js';
 
 declare global {
 	namespace App {
-		interface PageData {
-			session: Session | null;
-		}
+		// interface PageData {
+		// 	session: Session | null;
+		// }
 		// interface Error {}
 		// interface Platform {}
 	}
