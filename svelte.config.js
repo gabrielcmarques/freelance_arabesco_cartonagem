@@ -11,7 +11,8 @@ const config = {
 		adapter: adapter(),
 		files: {
 			serviceWorker: 'src/service-worker.js'
-		}
+		},
+		
 	}
 };
 
