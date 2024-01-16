@@ -42,25 +42,24 @@ app.get('/produtos', (req, res) => {
 });
 
 app.get('/produtos/:id', (req, res) => {
-    const produtoId = req.params.id;
+	const produtoId = req.params.id;
 
 	const query = 'SELECT nome, `desc`, imagem_url, preco, slug FROM produtos WHERE id = ?';
-    const values = [produtoId];
+	const values = [produtoId];
 
-    db.query(query, values, (err, data) => {
-        if (err) {
-            console.error('Database query ERROR!!!: ', err);
-            return res.status(500).json({ error: 'Internal Server Error' });
-        }
+	db.query(query, values, (err, data) => {
+		if (err) {
+			console.error('Database query ERROR!!!: ', err);
+			return res.status(500).json({ error: 'Internal Server Error' });
+		}
 
-        if (data.length === 0) {
-            return res.status(404).json({ error: 'Produto não encontrado' });
-        }
+		if (data.length === 0) {
+			return res.status(404).json({ error: 'Produto não encontrado' });
+		}
 
-        return res.json(data[0]); // Assuming you want to return the first matching product
-    });
+		return res.json(data[0]); // Assuming you want to return the first matching product
+	});
 });
-
 
 app.post('/produtos', (req, res) => {
 	const query = 'INSERT INTO produtos (`nome`,`preco`, `desc`, `imagem_url`, `slug`) VALUES (?)';
@@ -86,7 +85,8 @@ app.put('/produtos/:id', (req, res) => {
 		return res.status(400).json({ error: 'Nome, Desc ou Imagem estão faltando na requisição.' });
 	}
 
-	const updateQuery = 'UPDATE produtos SET nome = ?, `preco` = ?, `desc` = ?, imagem_url = ? WHERE id = ?';
+	const updateQuery =
+		'UPDATE produtos SET nome = ?, `preco` = ?, `desc` = ?, imagem_url = ? WHERE id = ?';
 	const values = [nome, preco, desc, imagem_url, produtoId];
 
 	db.query(updateQuery, values, (err, result) => {

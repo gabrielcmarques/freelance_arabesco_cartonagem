@@ -1,4 +1,5 @@
 // src/stores/posts.ts
+// TODO: CACHE
 
 import { writable } from 'svelte/store';
 

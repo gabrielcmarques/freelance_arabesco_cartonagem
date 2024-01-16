@@ -35,14 +35,6 @@
 					Sobre
 				</a>
 			</li>
-			<li>
-				<a
-					href="/#contato"
-					class="p-2 sm:p-4 border-b-2 border-violet-500 border-opacity-0 hover:border-opacity-100 hover:text-violet-500 duration-200 cursor-pointer"
-				>
-					Contato
-				</a>
-			</li>
 		</ul>
 	</nav>
 </section>

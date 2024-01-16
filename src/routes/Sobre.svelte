@@ -1,9 +1,6 @@
 <section class="container max-w-7xl mx-auto my-16 text-white">
-	<div>
-		<!-- <div class="col-span-full text-center mt-10"> -->
-		<h1 class="text-center text-6xl max-sm:text-4xl max-md:text-5xl mt-4">Sobre:</h1>
-	</div>
-	<!-- ABOUT US 1 -->
+	<!-- SOBRE 1 -->
+	<hr class="my-16" />
 	<div class="gcontainer gap-2 mt-10 flex flex-col items-center">
 		<div class="snip1374 aspect-square max-sm:w-5/6 max-md:w-3/6 mx-auto">
 			<a href="/sobre">
@@ -30,18 +27,18 @@
 			</p>
 		</div>
 	</div>
-	<!-- END ABOUT US 1 -->
+	<!-- END SOBRE 1 -->
 
 	<div class="clear-both" />
 	<hr class="my-16" />
-	<!-- ABOUT US 3 -->
+	<!-- SOBRE 2 -->
 	<div class="text-center mb-10 p-0">
 		<h1 class="text-5xl font-bold">Conheça os meus produtos:</h1>
 	</div>
 	<div class="flex flex-wrap justify-center items-center gap-7">
 		<div class="max-w-sm mx-2 my-4">
 			<figure>
-				<a href="/sobre">
+				<a href="#">
 					<img
 						src="https://cdn.shopify.com/s/files/1/2204/2817/files/hottest_trends_2-0078.jpg?1369754927576680618"
 						alt="sampl45"
@@ -57,7 +54,7 @@
 		</div>
 		<div class="max-w-sm mx-2 my-4">
 			<figure>
-				<a href="/sobre">
+				<a href="#">
 					<img
 						src="https://cdn.shopify.com/s/files/1/2204/2817/files/budget_friendly_ideas_3-0078.jpg?15005372342585381625"
 						alt="sample50"
@@ -73,7 +70,7 @@
 		</div>
 		<div class="max-w-sm mx-2 my-4">
 			<figure>
-				<a href="/sobre">
+				<a href="#">
 					<img
 						src="https://cdn.shopify.com/s/files/1/2204/2817/files/custom_proposals_2-0078.jpg?1369754927576680618"
 						alt="sample46"
@@ -88,7 +85,8 @@
 			</figure>
 		</div>
 	</div>
-	<!-- END ABOUT US 3 -->
+	<hr class="my-16" />
+	<!-- END SOBRE 2 -->
 </section>
 
 <style>

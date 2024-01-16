@@ -1,5 +1,6 @@
 <script lang="ts">
-	import Button from '@smui/button';
+	import * as config from '$lib/config';
+
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
 	import LinearProgress from '@smui/linear-progress';
 
@@ -9,7 +10,7 @@
 	async function deletePost(id: number) {
 		const shouldDelete = window.confirm('Are you sure you want to delete this post?');
 		if (shouldDelete) {
-			const res = await fetch(`http://localhost:8800/produtos/${id}`, {
+			const res = await fetch(`${config.url}/produtos/${id}`, {
 				method: 'DELETE'
 			}).then((res) => {
 				res.json();
@@ -39,9 +40,16 @@
 				<Cell><img width="100" src="https://i.imgur.com/IAt1QKp.jpeg" alt="" /></Cell>
 				<Cell>{item.createdAt}</Cell>
 				<Cell>
-					<a href={`/products/${item.id}`}>Edit</a>
+					<a
+						class=" mt-4 bg-blue-500 text-white p-3.5 rounded-md hover:bg-blue-600 w-16 max-w-lg"
+						href={`/products/${item.id}`}>Edit</a
+					>
 
-					<Button on:click={() => deletePost(item.id)}>Delete</Button>
+					<button
+						on:click={() => deletePost(item.id)}
+						class="mt-4 bg-red-500 text-white p-3 rounded-md hover:bg-red-600 max-w-lg"
+						>Delete</button
+					>
 				</Cell>
 			</Row>
 		{/each}

@@ -1,9 +1,9 @@
 <script lang="ts">
-	// import shape_texture from '$lib/assets/texture.webp';
 	// import type { PageData } from './$types';
 	import Contato from './Contato.svelte';
 	import Header from './Header.svelte';
 	import Produtos from './Produtos.svelte';
+	import Sobre from './Sobre.svelte';
 </script>
 
 <svelte:head>
@@ -15,4 +15,5 @@
 	<Header />
 	<Contato />
 	<Produtos />
+	<Sobre />
 </div>

@@ -6,16 +6,9 @@ export async function load({ params }) {
 	try {
 		const response = await fetch(`${config.url}/produtos/${params.slug}`);
 		// console.log(response);
-
-		// if (!response.ok) {
-		// 	throw error(response.status, `Could not find ${params.slug}`);
-		// }
-
 		const post = await response.json();
-		const postSlug = params
-		console.log(post , postSlug);
-		// const response = await fetch('http://localhost:8800/produtos');
-
+		const postSlug = params;
+		// console.log(post, postSlug);
 		return { post, postSlug };
 	} catch (e) {
 		throw error(404, `Could not find ${params.slug}`);
