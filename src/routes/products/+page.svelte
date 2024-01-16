@@ -1,24 +1,26 @@
 <script lang="ts">
+	// TODO: Add Validation in functions.
+
+	import * as config from '$lib/config';
+	import Button from '@smui/button';
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
 	import type { PageData } from './$types';
+	import Dialog from './Dialoge.svelte';
+	import Modal from './Modal.svelte';
+	import Table from './Table.svelte';
+
+	// Create a writable store to hold the posts data
+	const postsStore = writable([]);
+	export let data;
+	let open = false;
+	let items: Post[] = [];
+	let loaded = false;
+	// console.log(data.posts);
 
 	// Store to manage product data
 	let products = writable([]);
-
-	// TODO: Add Validation in functions.
-
-	const fetchProducts = async () => {
-		const response = await fetch('http://localhost:8800/produtos');
-		if (response.ok) {
-			products = await response.json();
-			console.log('products', products);
-		} else {
-			console.error('Error fetching products:\n ', response.statusText);
-		}
-	};
-
-	onMount(fetchProducts);
+	let showModal = null;
 
 	// Variables to hold Added values for the product
 	let newNome = '';
@@ -104,98 +106,43 @@
 			}
 		}
 	};
+
+	onMount(() => loadThings(false));
+
+	function loadThings(wait: boolean) {
+		if (typeof fetch !== 'undefined') {
+			loaded = false;
+
+			fetch('http://localhost:8800/produtos')
+				.then((response) => response.json())
+				.then((json) =>
+					setTimeout(
+						() => {
+							items = json;
+							loaded = true;
+						},
+						// Simulate a long load time.
+						wait ? 2000 : 0
+					)
+				);
+		}
+	}
 </script>
 
 <main>
 	<h1 class="text-7xl font-bold my-4 text-white text-center">Produtos</h1>
 
-	<!-- Display products -->
-	<div class="max-w-7xl mx-auto py-8 px-4 sm:px-6">
-		<div class="max-w-md">
-			<form on:submit|preventDefault={addProduct} class="block">
-				<!-- Add form fields for new product -->
-				<input bind:value={newNome} placeholder="Product Name" />
-				<input bind:value={newPreco} placeholder="Product Price" />
-				<input bind:value={newDesc} placeholder="Product Description" />
-				<input bind:value={newImagemUrl} placeholder="Image URL" />
-
-				<button type="submit" class="text-white">Add Product</button>
-			</form>
-		</div>
-		<!-- Add form for adding new product -->
-		{#if products.length > 0}
-			{#each products as product (product.id)}
-				<div class="bg-white border border-gray-200 rounded-lg shadow-md p-4 mb-4 w-72 h-80">
-					<strong class="text-center text-2xl text-gray-800">{product.nome}</strong>
-					<p class="text-base text-gray-600 p-10">{product.desc}</p>
-					<p class="mt-4 rounded-lg text-center">{product.imagem_url}</p>
-				</div>
-				<!-- Update form for product -->
-				<form on:submit|preventDefault={() => updateProduct(product.id)}>
-					<!-- Update form fields -->
-					<div class="mb-2">
-						<label for="update-nome" class="block text-sm font-medium text-gray-100">Nome</label>
-						<input
-							type="text"
-							id="update-nome"
-							name="update-nome"
-							class="mt-1 p-2 border rounded-md"
-							bind:value={updateNome}
-						/>
-					</div>
-					<div class="mb-2">
-						<label for="update-nome" class="block text-sm font-medium text-gray-100">Preço</label>
-						<input
-							type="text"
-							id="update-nome"
-							name="update-nome"
-							class="mt-1 p-2 border rounded-md"
-							bind:value={updatePreco}
-						/>
-					</div>
-					<div class="mb-2">
-						<label for="update-desc" class="block text-sm font-medium text-gray-100"
-							>Descrição</label
-						>
-						<textarea
-							id="update-desc"
-							name="update-desc"
-							rows="3"
-							class="mt-1 p-2 border rounded-md"
-							bind:value={updateDesc}
-						/>
-					</div>
-					<div class="mb-2">
-						<label for="update-imagem-url" class="block text-sm font-medium text-gray-100"
-							>URL da Imagem</label
-						>
-						<input
-							type="text"
-							id="update-imagem-url"
-							name="update-imagem-url"
-							class="mt-1 p-2 border rounded-md"
-							bind:value={updateImagemUrl}
-						/>
-					</div>
-					<button type="submit" class="text-white bg-blue-500 p-2 rounded-md hover:bg-blue-600"
-						>Update</button
-					>
-				</form>
-				<!-- Button to delete product -->
-				<button
-					class="text-white bg-red-500 p-2 rounded-md hover:bg-red-600"
-					on:click|preventDefault={() => deleteProduct(product.id)}>Delete</button
-				>
-				<div />
-			{/each}
-		{:else}
-			<p class="text-3xl text-gray-100">Carregando...</p>
-		{/if}
+	<div style="display:flex; justify-content:space-between">
+		<Button on:click={() => (open = true)}>Add New</Button>
 	</div>
+
+	<Table {items} {loaded} />
+
+	<Dialog {open} />
 </main>
 
-<style>
+<!-- <style>
 	* {
 		border: red dashed;
 	}
-</style>
+</style> -->

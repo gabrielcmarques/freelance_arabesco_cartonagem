@@ -1,6 +1,7 @@
 import cors from 'cors';
 import express from 'express';
 import mysql from 'mysql';
+import { v4 as uuidv4 } from 'uuid';
 
 const app = express();
 app.use(express.json());
@@ -40,29 +41,53 @@ app.get('/produtos', (req, res) => {
 	});
 });
 
+app.get('/produtos/:id', (req, res) => {
+    const produtoId = req.params.id;
+
+	const query = 'SELECT nome, `desc`, imagem_url, preco, slug FROM produtos WHERE id = ?';
+    const values = [produtoId];
+
+    db.query(query, values, (err, data) => {
+        if (err) {
+            console.error('Database query ERROR!!!: ', err);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
+
+        if (data.length === 0) {
+            return res.status(404).json({ error: 'Produto não encontrado' });
+        }
+
+        return res.json(data[0]); // Assuming you want to return the first matching product
+    });
+});
+
+
 app.post('/produtos', (req, res) => {
-	const query = 'INSERT INTO produtos (`nome`,`preco`, `desc`, `imagem_url`) VALUES (?)';
-	const values = [req.body.nome, req.body.preco, req.body.desc, req.body.imagem_url];
+	const query = 'INSERT INTO produtos (`nome`,`preco`, `desc`, `imagem_url`, `slug`) VALUES (?)';
+
+	const uuid4_slug = uuidv4();
+	const values = [req.body.nome, req.body.preco, req.body.desc, req.body.imagem_url, uuid4_slug];
 	// const values = ["title from backend", "desc from backend", "imagem from backend"]
 
 	// console.log('!!@@values \n', values);
 
 	db.query(query, [values], (err, data) => {
+		console.log('data', values);
 		if (err) return res.json(err);
-		return res.json('Produto criado sucesso!');
+		return res.json(`Produto criado sucesso: ${values}`);
 	});
 });
 
 app.put('/produtos/:id', (req, res) => {
 	const produtoId = req.params.id;
-	const { nome, desc, imagem_url } = req.body;
+	const { nome, preco, desc, imagem_url } = req.body;
 
-	if (!nome || !desc || !imagem_url) {
+	if (!nome || !preco || !desc || !imagem_url) {
 		return res.status(400).json({ error: 'Nome, Desc ou Imagem estão faltando na requisição.' });
 	}
 
-	const updateQuery = 'UPDATE produtos SET nome = ?, `desc` = ?, imagem_url = ? WHERE id = ?';
-	const values = [nome, desc, imagem_url, produtoId];
+	const updateQuery = 'UPDATE produtos SET nome = ?, `preco` = ?, `desc` = ?, imagem_url = ? WHERE id = ?';
+	const values = [nome, preco, desc, imagem_url, produtoId];
 
 	db.query(updateQuery, values, (err, result) => {
 		if (err) {
