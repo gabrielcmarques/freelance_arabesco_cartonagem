@@ -7,6 +7,8 @@
 	export let items: any[] = [];
 	export let loaded = false;
 
+	const localServerUrl = 'http://localhost:5173';
+
 	async function deletePost(id: number) {
 		const shouldDelete = window.confirm('Are you sure you want to delete this post?');
 		if (shouldDelete) {
@@ -18,6 +20,8 @@
 			});
 		}
 	}
+
+	// console.log(items);
 </script>
 
 <DataTable table$aria-label="User list" style="width: 100%;">
@@ -37,7 +41,23 @@
 				<Cell>{item.nome}</Cell>
 				<Cell>{item.preco}</Cell>
 				<Cell>{item.desc}</Cell>
-				<Cell><img width="100" src="https://i.imgur.com/IAt1QKp.jpeg" alt="" /></Cell>
+				<!-- <Cell><img width="100" src={`http://localhost:8800${imageResponse.imagem_url}`} alt="" /></Cell> -->
+
+				<!-- Fetch image URL from the server API -->
+				{#await fetch(`${config.url}/produtos/${item.id}/imagem`)}
+					<LinearProgress indeterminate />
+				{:then imageResponse}
+					{console.log('Image Response:', imageResponse)}
+					<!-- Use the extracted image URL -->
+					<Cell
+						><img
+							width="100"
+							src={`${imageResponse ? imageResponse.imagem_url3 : ''}`}
+							alt=""
+						/></Cell
+					>
+				{/await}
+
 				<Cell>{item.createdAt}</Cell>
 				<Cell>
 					<a

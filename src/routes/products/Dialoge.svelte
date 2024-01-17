@@ -7,22 +7,23 @@
 	let nome = '';
 	let preco = '';
 	let desc = '';
-	let imagem_url = '';
+	let imagem_url2 = '';
 
 	export let open = false;
 
 	async function createPost() {
+		const formData = new FormData();
+		formData.append('nome', nome);
+		formData.append('preco', preco);
+		formData.append('desc', desc);
+		formData.append('imagem_url2', (document.getElementById('imagem_url2') as HTMLInputElement).files[0]);
+
 		const res = await fetch(`${config.url}/produtos`, {
 			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				nome,
-				preco,
-				desc,
-				imagem_url
-			})
+			// headers: {
+			// 	'Content-Type': 'application/json'
+			// },
+			body: formData,
 		}).then((res) => {
 			res.json();
 			open = false;
@@ -36,11 +37,11 @@
 	<Content id="mandatory-content">
 		<Card padded>
 			<div class="mb-4">
-				<label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+				<label for="nome" class="block text-sm font-medium text-gray-700">Nome</label>
 				<input
 					type="text"
-					id="title"
-					name="title"
+					id="nome"
+					name="nome"
 					class="mt-1 p-2 border rounded-md"
 					bind:value={nome}
 				/>
@@ -48,39 +49,38 @@
 			</div>
 
 			<div class="mb-4">
-				<label for="content" class="block text-sm font-medium text-gray-700">Content</label>
+				<label for="preco" class="block text-sm font-medium text-gray-700">Preco</label>
 				<textarea
-					id="content"
-					name="content"
+					id="preco"
+					name="preco"
 					rows="3"
 					class="mt-1 p-2 border rounded-md"
 					bind:value={preco}
 				/>
-				<p class="mt-2 text-sm text-gray-500"><span id="internalCounter">0 / 100</span></p>
 			</div>
 
 			<div class="mb-4">
-				<label for="content" class="block text-sm font-medium text-gray-700">Content</label>
+				<label for="descricao" class="block text-sm font-medium text-gray-700">Descrição</label>
 				<textarea
-					id="content"
-					name="content"
+					id="descricao"
+					name="descricao"
 					rows="3"
 					class="mt-1 p-2 border rounded-md"
 					bind:value={desc}
 				/>
-				<p class="mt-2 text-sm text-gray-500"><span id="internalCounter">0 / 100</span></p>
 			</div>
 
+			
+
+			<!-- BELLOW THE FORM I WANT TO CHANGE FOR FILE UPLOAD. -->
 			<div class="mb-4">
-				<label for="content" class="block text-sm font-medium text-gray-700">Content</label>
-				<textarea
-					id="content"
-					name="content"
-					rows="3"
-					class="mt-1 p-2 border rounded-md"
-					bind:value={imagem_url}
+				<label for="imagem_url2" class="block text-sm font-medium text-gray-700">Imagem_url2</label>
+				<input
+					id="imagem_url2"
+					name="imagem_url2"
+					type="file"
+					class="mt-1 p-2 border rounded-md"					
 				/>
-				<p class="mt-2 text-sm text-gray-500"><span id="internalCounter">0 / 100</span></p>
 			</div>
 
 			<button

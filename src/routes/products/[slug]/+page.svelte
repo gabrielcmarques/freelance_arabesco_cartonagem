@@ -8,7 +8,7 @@
 	let valueNome = data.post.nome;
 	let valuePreco = data.post.preco;
 	let valueDesc = data.post.desc;
-	let valueImagemUrl = data.post.imagem_url;
+
 
 	// console.log(data);
 
@@ -17,7 +17,7 @@
 	// console.log(dataSlug);
 
 	async function editPost() {
-		console.log(dataSlug, valueNome, valuePreco, valueDesc, valueImagemUrl);
+		console.log(dataSlug, valueNome, valuePreco, valueDesc);
 		const res = await fetch(`${config.url}/produtos/${dataSlug}/`, {
 			method: 'PUT',
 			headers: {
@@ -27,7 +27,7 @@
 				nome: valueNome,
 				preco: valuePreco,
 				desc: valueDesc,
-				imagem_url: valueImagemUrl
+
 			})
 		}).then((res) => {
 			res.json();
@@ -56,12 +56,12 @@
 			/>
 
 			<!-- Edit Imagem -->
-			<label class="block text-lg font-medium text-gray-200 mt-4">Edit Imagem</label>
+			<!-- <label class="block text-lg font-medium text-gray-200 mt-4">Edit Imagem</label>
 			<textarea
 				class="mt-1 p-3 border rounded-md w-full"
 				bind:value={valueImagemUrl}
 				maxlength="2500"
-			/>
+			/> -->
 
 			<button
 				class="mt-4 bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 w-full"

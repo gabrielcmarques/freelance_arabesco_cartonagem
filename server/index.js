@@ -1,11 +1,27 @@
 import cors from 'cors';
 import express from 'express';
+import multer from 'multer';
 import mysql from 'mysql';
 import { v4 as uuidv4 } from 'uuid';
+import fs from 'fs'
+
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use('img', express.static('uploads/'));
+
+const storage = multer.diskStorage({
+	destination: function (req, file, cb) {
+		cb(null, 'uploads/'); // Specify the upload directory
+	},
+	filename: function (req, file, cb) {
+		const uniqueFilename = `${uuidv4()}-${file.originalname}`;
+		cb(null, uniqueFilename);
+	}
+});
+
+const upload = multer({ storage: storage });
 
 const db = mysql.createConnection({
 	host: process.env.DB_HOST,
@@ -61,16 +77,47 @@ app.get('/produtos/:id', (req, res) => {
 	});
 });
 
-app.post('/produtos', (req, res) => {
+app.get('/produtos/:id/imagem', (req, res) => {
+	const produtoId = req.params.id;
+
+	const query = 'SELECT imagem_url FROM produtos WHERE id = ?';
+	const values = [produtoId];
+
+	db.query(query, values, (err, data) => {
+		if (err) {
+			console.error('Database query ERROR!!!: ', err);
+			return res.status(500).json({ error: 'Internal Server Error' });
+		}
+
+		if (data.length === 0) {
+			return res.status(404).json({ error: 'Produto não encontrado' });
+		}
+
+		return res.json({ imagem_url3: data[0].imagem_url });
+	});
+});
+
+app.post('/produtos', upload.single('imagem_url2'), (req, res) => {
 	const query = 'INSERT INTO produtos (`nome`,`preco`, `desc`, `imagem_url`, `slug`) VALUES (?)';
 
 	const uuid4_slug = uuidv4();
-	const values = [req.body.nome, req.body.preco, req.body.desc, req.body.imagem_url, uuid4_slug];
-	// const values = ["title from backend", "desc from backend", "imagem from backend"]
+	let imagem_url2;
 
-	// console.log('!!@@values \n', values);
+	if (req.file) {
+		// Image file was uploaded
+		const uniqueFilename = `${uuidv4()}-${req.file.originalname}`;
+		imagem_url2 = `/uploads/${uniqueFilename}`;
+	} else {
+		// No image file was uploaded
+		imagem_url2 = req.body.imagem_url2;
+	}
 
-	db.query(query, [values], (err, data) => {
+	const values = [req.body.nome, req.body.preco, req.body.desc, imagem_url2, uuid4_slug];
+
+	console.log('!!@@values \n', values);
+
+	// (err, data)
+	db.query(query, [values], (err) => {
 		console.log('data', values);
 		if (err) return res.json(err);
 		return res.json(`Produto criado sucesso: ${values}`);
