@@ -3,20 +3,20 @@ import express from 'express';
 import multer from 'multer';
 import mysql from 'mysql';
 import { v4 as uuidv4 } from 'uuid';
-import fs from 'fs'
-
 
 const app = express();
-app.use(express.json());
 app.use(cors());
-app.use('img', express.static('uploads/'));
+app.use(express.json());
+app.use(express.static('public'));
+
+const uuid4_slug = uuidv4();
 
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
-		cb(null, 'uploads/'); // Specify the upload directory
+		cb(null, 'public/Images'); // Specify the upload directory
 	},
 	filename: function (req, file, cb) {
-		const uniqueFilename = `${uuidv4()}-${file.originalname}`;
+		const uniqueFilename = `${uuid4_slug}-${file.originalname}`;
 		cb(null, uniqueFilename);
 	}
 });
@@ -93,32 +93,28 @@ app.get('/produtos/:id/imagem', (req, res) => {
 			return res.status(404).json({ error: 'Produto não encontrado' });
 		}
 
-		return res.json({ imagem_url3: data[0].imagem_url });
+		return res.json({ imagem_url: data[0].imagem_url });
 	});
 });
 
 app.post('/produtos', upload.single('imagem_url2'), (req, res) => {
 	const query = 'INSERT INTO produtos (`nome`,`preco`, `desc`, `imagem_url`, `slug`) VALUES (?)';
 
-	const uuid4_slug = uuidv4();
 	let imagem_url2;
 
 	if (req.file) {
-		// Image file was uploaded
-		const uniqueFilename = `${uuidv4()}-${req.file.originalname}`;
-		imagem_url2 = `/uploads/${uniqueFilename}`;
+		const uniqueFilename = `${uuid4_slug}-${req.file.originalname}`;
+		imagem_url2 = `/Images/${uniqueFilename}`;
 	} else {
-		// No image file was uploaded
 		imagem_url2 = req.body.imagem_url2;
 	}
 
 	const values = [req.body.nome, req.body.preco, req.body.desc, imagem_url2, uuid4_slug];
 
-	console.log('!!@@values \n', values);
+	// console.log('!!@@values \n', values);
 
 	// (err, data)
 	db.query(query, [values], (err) => {
-		console.log('data', values);
 		if (err) return res.json(err);
 		return res.json(`Produto criado sucesso: ${values}`);
 	});

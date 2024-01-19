@@ -9,7 +9,6 @@
 	let valuePreco = data.post.preco;
 	let valueDesc = data.post.desc;
 
-
 	// console.log(data);
 
 	const dataSlug = JSON.parse(data.postSlug.slug);
@@ -26,8 +25,7 @@
 			body: JSON.stringify({
 				nome: valueNome,
 				preco: valuePreco,
-				desc: valueDesc,
-
+				desc: valueDesc
 			})
 		}).then((res) => {
 			res.json();

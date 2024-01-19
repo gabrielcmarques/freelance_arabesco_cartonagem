@@ -3,7 +3,7 @@
 	<hr class="my-16" />
 	<div class="gcontainer gap-2 mt-10 flex flex-col items-center">
 		<div class="snip1374 aspect-square max-sm:w-5/6 max-md:w-3/6 mx-auto">
-			<a href="/sobre">
+			<a href="#">
 				<img
 					src="https://cdn.shopify.com/s/files/1/2204/2817/files/featurette-10-1000x1000.jpg?98122347912348223"
 					alt="sample57"

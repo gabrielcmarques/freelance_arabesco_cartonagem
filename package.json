@@ -1,6 +1,6 @@
 {
 	"name": "website-miriam-cartonagem",
-	"homepage": "https://arabescocartonagem.store",
+	"homepage": "http://ds3.hospedam.com/",
 	"version": "0.0.1",
 	"devDependencies": {
 		"@neoconfetti/svelte": "^1.0.0",

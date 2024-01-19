@@ -9,6 +9,9 @@
 
 <div class="app">
 	<main>
+		<a href="/products">1</a>
+		<a href="/products/1">2</a>
+		<a href="/produto">3</a>
 		<CookiesBtn />
 		<!-- <Navbar /> -->
 		<slot />

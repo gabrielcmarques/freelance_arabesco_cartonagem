@@ -16,14 +16,17 @@
 		formData.append('nome', nome);
 		formData.append('preco', preco);
 		formData.append('desc', desc);
-		formData.append('imagem_url2', (document.getElementById('imagem_url2') as HTMLInputElement).files[0]);
+		formData.append(
+			'imagem_url2',
+			(document.getElementById('imagem_url2') as HTMLInputElement).files[0]
+		);
 
 		const res = await fetch(`${config.url}/produtos`, {
 			method: 'POST',
 			// headers: {
 			// 	'Content-Type': 'application/json'
 			// },
-			body: formData,
+			body: formData
 		}).then((res) => {
 			res.json();
 			open = false;
@@ -70,17 +73,10 @@
 				/>
 			</div>
 
-			
-
 			<!-- BELLOW THE FORM I WANT TO CHANGE FOR FILE UPLOAD. -->
 			<div class="mb-4">
 				<label for="imagem_url2" class="block text-sm font-medium text-gray-700">Imagem_url2</label>
-				<input
-					id="imagem_url2"
-					name="imagem_url2"
-					type="file"
-					class="mt-1 p-2 border rounded-md"					
-				/>
+				<input id="imagem_url2" name="imagem_url2" type="file" class="mt-1 p-2 border rounded-md" />
 			</div>
 
 			<button

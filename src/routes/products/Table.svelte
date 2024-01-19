@@ -7,8 +7,6 @@
 	export let items: any[] = [];
 	export let loaded = false;
 
-	const localServerUrl = 'http://localhost:5173';
-
 	async function deletePost(id: number) {
 		const shouldDelete = window.confirm('Are you sure you want to delete this post?');
 		if (shouldDelete) {
@@ -41,22 +39,12 @@
 				<Cell>{item.nome}</Cell>
 				<Cell>{item.preco}</Cell>
 				<Cell>{item.desc}</Cell>
-				<!-- <Cell><img width="100" src={`http://localhost:8800${imageResponse.imagem_url}`} alt="" /></Cell> -->
-
-				<!-- Fetch image URL from the server API -->
-				{#await fetch(`${config.url}/produtos/${item.id}/imagem`)}
-					<LinearProgress indeterminate />
-				{:then imageResponse}
-					{console.log('Image Response:', imageResponse)}
-					<!-- Use the extracted image URL -->
-					<Cell
-						><img
-							width="100"
-							src={`${imageResponse ? imageResponse.imagem_url3 : ''}`}
-							alt=""
-						/></Cell
-					>
-				{/await}
+				{#if item.imagem_url}
+					<img width="100" src={`${config.url}${item.imagem_url}`} alt="" />
+				{:else}
+					<!-- Display a placeholder or handle missing image -->
+					<span>No Image</span>
+				{/if}
 
 				<Cell>{item.createdAt}</Cell>
 				<Cell>
