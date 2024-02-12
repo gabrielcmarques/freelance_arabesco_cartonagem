@@ -4,7 +4,7 @@
 
 <section>
 	<div
-		style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url({home_banner}) no-repeat center; background-size: cover; "
+		style="background: url({home_banner}) no-repeat center; background-size: cover;"
 		class="max-sm:py-56 max-md:py-60 py-80 max-lg:py-60"
 	/>
 </section>

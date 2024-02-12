@@ -1,5 +1,12 @@
 <script lang="ts">
-	import { bijuterias1, bijuterias2, bijuterias3, bijuterias4, bijuterias5 } from '$lib';
+	import {
+		bijuterias1,
+		bijuterias2,
+		bijuterias3,
+		bijuterias4,
+		bijuterias5,
+		bijuterias6
+	} from '$lib';
 	// import shape_texture from '$lib/assets/texture.webp';
 </script>
 
@@ -46,8 +53,8 @@
 		/>
 		<img
 			class="hover:opacity-75 h-full object-cover"
-			src={bijuterias1}
-			alt="bijuterias1"
+			src={bijuterias6}
+			alt="bijuterias6"
 			width="500"
 			height="500"
 		/>
